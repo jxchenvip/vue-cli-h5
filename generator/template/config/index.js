@@ -1,5 +1,5 @@
 ---
-extend: '/Users/jxc/githubs/templates/vue-template/config/index.js'
+extend: '@vue/cli-service/generator/template/config/index.js'
 replace:
 - !!js/regexp /\s*const\sbuildConfig\s=\srequire\(.+\);/
 - !!js/regexp /\s*\.\.\.buildConfig\(\),/
