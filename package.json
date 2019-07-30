@@ -1,0 +1,15 @@
+{
+  "name": "vue-cli-h5",
+  "version": "1.0.1",
+  "description": "基于vue-cli生成的项目注入一些命令，及eslint...配合jenkins自动化布署不同分支到不同环境",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "配合jenkins",
+    "布署分支"
+  ],
+  "author": "jxchenvip",
+  "license": "ISC"
+}
