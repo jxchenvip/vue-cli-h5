@@ -1,6 +1,6 @@
 // fe-h5-fn-start
 const fs = require("fs");
-
+const chalk = require("chalk");
 const projectNameContext = fs.readFileSync("./projectName.conf", "utf8");
 const projectBaseName = projectNameContext.replace(/PRONAME=(\w+)/, "$1");
 
