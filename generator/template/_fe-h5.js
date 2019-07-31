@@ -2,7 +2,9 @@
 const fs = require("fs");
 const chalk = require("chalk");
 const projectNameContext = fs.readFileSync("./projectName.conf", "utf8");
-const projectBaseName = projectNameContext.replace(/PRONAME=(\w+)/, "$1");
+const projectBaseName = projectNameContext
+  .replace(/((.+)\n)*PRONAME=(.*)\n((.+)\n)*/gm, "$3")
+  .trim();
 
 const buildConfig = () => {
   const { DEPLOY_ENV, NODE_ENV } = process.env;
