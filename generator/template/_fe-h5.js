@@ -11,23 +11,23 @@ const buildConfig = () => {
   const maps = {
     dev: {
       notes: "开发环境",
-      assetsPublicPath: `/${projectBaseName}`
+      publicPath: `/${projectBaseName}`
     },
     test108: {
       notes: "测试服务器108",
-      assetsPublicPath: `/${projectBaseName}`
+      publicPath: `/${projectBaseName}`
     },
     test109: {
       notes: "测试服务器109",
-      assetsPublicPath: `/${projectBaseName}`
+      publicPath: `/${projectBaseName}`
     },
     staging: {
       notes: "预上线环境",
-      assetsPublicPath: `/${projectBaseName}`
+      publicPath: `/${projectBaseName}`
     },
     release: {
       notes: "正式环境",
-      assetsPublicPath: `/${projectBaseName}`
+      publicPath: `/${projectBaseName}`
     }
   };
   const res = maps[DEPLOY_ENV] ? maps[DEPLOY_ENV] : {};

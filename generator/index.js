@@ -1,5 +1,4 @@
 module.exports = (api, projectOptions) => {
-  console.log("api.generator", api.generator.pkg.name);
   api.extendPackage({
     scripts: {
       "build:dev": "DEPLOY_ENV=dev npm run build",
