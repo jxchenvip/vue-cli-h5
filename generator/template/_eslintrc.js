@@ -1,3 +1,4 @@
+<% if (hasEslint) { %>
 module.exports = {
   root: true,
   env: {
@@ -54,3 +55,4 @@ module.exports = {
     },
   },
 };
+<% } %>

@@ -1,6 +1,6 @@
 {
   "name": "vue-cli-plugin-jxchenvip",
-  "version": "1.0.8",
+  "version": "1.0.0",
   "description": "基于vue-cli生成的项目注入一些命令，及eslint...配合jenkins自动化布署不同分支到不同环境",
   "main": "index.js",
   "scripts": {
