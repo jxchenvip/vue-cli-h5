@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require("chalk");
 module.exports = (api, projectOptions) => {
   api.extendPackage({
     scripts: {
@@ -15,6 +16,16 @@ module.exports = (api, projectOptions) => {
     hasVueConfig: fs.existsSync(api.resolve("./vue.config.js")),
     name: api.generator.pkg.name
   };
+  if (data.hasVueConfig) {
+    console.log(chalk.green("--------------------------------"));
+    console.log(chalk.green("手动将下面代码添加到vue.config.js中"));
+    console.log('const buildConfig = require("./.fe-h5.js");');
+    console.log("module.exports = {");
+    console.log("    // ...");
+    console.log("    ...buildConfig(),");
+    console.log("};");
+    console.log(chalk.green("--------------------------------"));
+  }
   console.log(JSON.stringify(data));
   api.render("./template", data);
 };
