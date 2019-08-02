@@ -1,5 +1,6 @@
 // fe-h5-fn-start
 const fs = require("fs");
+const path = require("path");
 const chalk = require("chalk");
 
 /**
@@ -7,7 +8,7 @@ const chalk = require("chalk");
  */
 function getBaseurl() {
   const projectNameContext = fs.readFileSync("./projectName.conf", "utf8");
-  const projectBaseName = projectNameContext.match(/PRONAME=(.*)(?=\n)?/);
+  const projectBaseName = projectNameContext.match(/\bPRONAME=(.*)(?=\n)?/);
   return projectBaseName ? projectBaseName[1].trim() : "";
 }
 
@@ -15,8 +16,9 @@ function getBaseurl() {
  * 构建分支信息
  */
 function buildBranchInformation(res) {
-  const { notes, ...others } = res;
+  const { notes = "无匹配", ...others } = res;
   const { DEPLOY_ENV } = process.env;
+  console.log(chalk.green(`【DEPLOY_ENV】: ${DEPLOY_ENV}`));
   if (DEPLOY_ENV === undefined) {
     console.log(chalk.green(`【提示】: 可以布署到任意域名根目录下`));
     console.log(chalk.green(`【提示】: {assetsPublicPath: '/'}`));
@@ -60,8 +62,8 @@ function objectMerge(target, source) {
  */
 const vueconfig = (config = {}) => {
   const { DEPLOY_ENV: dv, NODE_ENV: nv } = process.env;
-  console.log("DEPLOY_ENV: ", dv);
   if (nv !== "production") return {};
+
   const BASE_URL = getBaseurl();
   const maps = objectMerge(
     {
@@ -88,8 +90,10 @@ const vueconfig = (config = {}) => {
     },
     config
   );
-  const res = maps[dv] ? maps[dv] : {};
-  res.publicPath = `${res.publicPath}${BASE_URL}`;
+  const res = maps[dv]
+    ? maps[dv]
+    : { publicPath: "/", notes: "根目录任何环境" };
+  res.publicPath = path.join(res.publicPath, BASE_URL);
   const { notes, ...others } = res;
   buildBranchInformation(res);
   return others;
