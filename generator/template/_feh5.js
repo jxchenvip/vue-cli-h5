@@ -93,7 +93,7 @@ const vueconfig = (config = {}) => {
   const res = maps[dv]
     ? maps[dv]
     : { publicPath: "/", notes: "根目录任何环境" };
-  res.publicPath = path.join(res.publicPath, BASE_URL);
+  res.publicPath = `${res.publicPath.replace(/\/*$/, "/")}${BASE_URL}`;
   const { notes, ...others } = res;
   buildBranchInformation(res);
   return others;

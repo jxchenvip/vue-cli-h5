@@ -45,9 +45,6 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-    },
   },
 };
 <% } %>
